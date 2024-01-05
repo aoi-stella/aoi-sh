@@ -7,6 +7,7 @@ def get_mode() -> int:
     Returns:
         int: モード
     """
+    print("+====================+")
     print("Select script mode")
     print("[1]. Find offset for RIP")
     print("[2]. Exploit BOF")
@@ -25,12 +26,12 @@ def subscribe_obsever(cmd_mgr: CmdMng):
 def entry():
     """エントリーポイント
     """
-    cmd_mgr = CmdMng()
+    while True:
+        cmd_mgr = CmdMng()
 
-    mode = get_mode()
-    subscribe_obsever(cmd_mgr)
-    cmd_mgr.set_mode(mode)
-    return
+        mode = get_mode()
+        subscribe_obsever(cmd_mgr)
+        cmd_mgr.set_mode(mode)
 
 if __name__ == "__main__":
     entry()
