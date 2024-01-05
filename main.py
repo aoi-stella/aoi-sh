@@ -1,5 +1,5 @@
 from cmd_mgr import CmdMng
-from observers.observer_list import FindRIPOffsetObserver, ExploitBOFObserver
+from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
 
 def get_mode() -> int:
     """モードをユーザーから取得する
@@ -20,7 +20,6 @@ def subscribe_obsever(cmd_mgr: CmdMng):
         cmd_mgr (CmdMng): コマンドマネージャー
     """
     cmd_mgr.add_observer(FindRIPOffsetObserver())
-    cmd_mgr.add_observer(ExploitBOFObserver())
     return
 
 def entry():
