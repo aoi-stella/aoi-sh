@@ -1,7 +1,6 @@
 from cmd_mgr import CmdMng
 from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
 from cmds.exit import ExitObserver
-from utils.log import Log
 from utils.interactive import Interactive
 
 def get_mode() -> int:
@@ -31,7 +30,25 @@ def subscribe_obsever(cmd_mgr: CmdMng):
 def entry():
     """エントリーポイント
     """
-    Log.log(Log.INFO, "Welcome to aoi shell")
+    ascii_art = """
+                                                        
+                                                        
+                     ■              ■              ■  ■ 
+                     ■              ■              ■  ■ 
+     ■■  ■                          ■              ■  ■ 
+    ■  ■ ■    ■■■■   ■         ■■■  ■ ■■■   ■■■■   ■  ■ 
+   ■    ■    ■    ■  ■ ■■■■■■ ■   ■ ■■   ■ ■    ■  ■  ■ 
+  ■    ■■    ■    ■  ■         ■    ■    ■ ■■■■■■  ■  ■ 
+  ■   ■■     ■    ■  ■          ■■  ■    ■ ■       ■  ■ 
+  ■  ■ ■ ■   ■    ■  ■        ■   ■ ■    ■ ■    ■  ■  ■ 
+   ■■   ■     ■■■■   ■         ■■■  ■    ■  ■■■■   ■  ■ 
+                                                        
+                                                        
+                                                        
+    
+    """
+    print(ascii_art)
+    Interactive.message("Welcome to aoi shell")
     while True:
         cmd_mgr = CmdMng()
 
