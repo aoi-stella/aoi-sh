@@ -24,3 +24,7 @@ class FontStyle:
     @staticmethod
     def wait_for_input_from_user(message):
         return f'{Color.BOLD}{message}{Color.RESET}'
+    
+    @staticmethod
+    def message_to_user(message):
+        return f'{Color.BOLD}{message}{Color.RESET}'
