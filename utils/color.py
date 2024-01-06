@@ -24,27 +24,3 @@ class Color:
 	BG_WHITE       = '\033[47m'#(背景)白
 	BG_DEFAULT     = '\033[49m'#背景色をデフォルトに戻す
 	RESET          = '\033[0m'#全てリセット
-
-if __name__ == '__main__':
-    print(f'黒:{Color.BLACK}●ABC{Color.RESET}')
-    print(f'赤:{Color.RED}●ABC{Color.RESET}')
-    print(f'緑:{Color.GREEN}●ABC{Color.RESET}')
-    print(f'黄:{Color.YELLOW}●ABC{Color.RESET}')
-    print(f'青:{Color.BLUE}●ABC{Color.RESET}')
-    print(f'マゼンタ:{Color.MAGENTA}●ABC{Color.RESET}')
-    print(f'シアン:{Color.CYAN}●ABC{Color.RESET}')
-    print(f'白:{Color.WHITE}●ABC{Color.RESET}')
-    print(f'下線:{Color.UNDERLINE}●ABC{Color.RESET}')
-    print(f'太字:{Color.BOLD}●ABC{Color.RESET}')
-    print(f'不可視:{Color.INVISIBLE}●ABC{Color.RESET}')
-    print(f'反転:{Color.REVERCE}●ABC{Color.RESET}')
-    print(f'背景黒:{Color.BG_BLACK}●ABC{Color.RESET}')
-    print(f'背景赤:{Color.BG_RED}●ABC{Color.RESET}')
-    print(f'背景緑:{Color.BG_GREEN}●ABC{Color.RESET}')
-    print(f'背景黄:{Color.BG_YELLOW}●ABC{Color.RESET}')
-    print(f'背景青:{Color.BG_BLUE}●ABC{Color.RESET}')
-    print(f'背景マゼンタ:{Color.BG_MAGENTA}●ABC{Color.RESET}')
-    print(f'背景シアン:{Color.BG_CYAN}●ABC{Color.RESET}')
-    print(f'背景白:{Color.BG_WHITE}●ABC{Color.RESET}')
-    #文字色と背景色を変える
-    print(f'文字赤+背景緑:{Color.RED}{Color.BG_GREEN}●ABC{Color.RESET}')

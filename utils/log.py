@@ -83,11 +83,3 @@ class Log:
             Log.__error(f'Invalid level: {level}')
             return
         log_dict[level](message)
-
-# 動作確認テスト
-if __name__ == "__main__":
-    log = Log()
-    log.log(Log.INFO, "this is info")
-    log.log(Log.DEBUG, "this is debug")
-    log.log(Log.WARNING, "this is warning")
-    log.log(Log.ERROR, "this is error")
