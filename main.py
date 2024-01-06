@@ -1,6 +1,8 @@
 from cmd_mgr import CmdMng
 from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
 from cmds.exit import ExitObserver
+from utils.log import Log
+from utils.interactive import Interactive
 
 def get_mode() -> int:
     """モードをユーザーから取得する
@@ -8,13 +10,12 @@ def get_mode() -> int:
     Returns:
         int: モード
     """
-    print("+====================+")
-    print("Select script mode")
-    print("[0]. Exit")
-    print("[1]. Find offset for RIP")
-    print("[2]. Exploit BOF")
+    Interactive.instruct("Select script mode")
+    Interactive.instruct("[0]. Exit")
+    Interactive.instruct("[1]. Find offset for RIP")
+    Interactive.instruct("[2]. Exploit BOF")
 
-    mode = int(input("Specify mode: "))
+    mode = int(Interactive.wait_for_input("Specify mode: "))
     return mode
 
 def subscribe_obsever(cmd_mgr: CmdMng):
@@ -30,6 +31,7 @@ def subscribe_obsever(cmd_mgr: CmdMng):
 def entry():
     """エントリーポイント
     """
+    Log.log(Log.INFO, "Welcome to aoi shell")
     while True:
         cmd_mgr = CmdMng()
 
