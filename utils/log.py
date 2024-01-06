@@ -1,4 +1,4 @@
-from utils.color import Color
+from utils.style import FontStyle
     
 class Log:
     """Logクラス
@@ -8,17 +8,8 @@ class Log:
     WARNING = 2
     ERROR = 3
     
-    def __init__(self) -> None:
-        """コンストラクタ
-        """
-        self.log_dict = {
-            Log.INFO: self.__info,
-            Log.DEBUG: self.__debug,
-            Log.WARNING: self.__warning,
-            Log.ERROR: self.__error
-        }
-    
-    def __get_title(self, level) -> str:
+    @staticmethod
+    def __get_title(level) -> str:
         """タイトルを取得する
 
         Args:
@@ -28,59 +19,70 @@ class Log:
             str: タイトル
         """
         title_dict = {
-            Log.INFO: f'{Color.BLUE + Color.BOLD}[+INFO+]{Color.RESET}',
-            Log.DEBUG:  f'{Color.GREEN + Color.BOLD}[+DEBUG+]{Color.RESET}',
-            Log.WARNING:  f'{Color.YELLOW + Color.BOLD}[+WARNING+]{Color.RESET}',
-            Log.ERROR:  f'{Color.RED + Color.BOLD}[+ERROR+]{Color.RESET}'
+            Log.INFO: f'{FontStyle.info()}[+INFO+]',
+            Log.DEBUG:  f'{FontStyle.debug()}[+DEBUG+]',
+            Log.WARNING:  f'{FontStyle.warning()}[+WARNING+]',
+            Log.ERROR:  f'{FontStyle.error()}[+ERROR+]'
         }
         
         if not level in title_dict:
             return
         return title_dict[level]
     
-    def __info(self, message):
+    @staticmethod
+    def __info(message):
         """INFOレベルログを出力する
 
         Args:
             message (str): メッセージ
         """
-        print(f'{self.__get_title(Log.INFO)} {message}')
+        print(f'{Log.__get_title(Log.INFO)} {message}')
 
-    def __debug(self, message):
+    @staticmethod
+    def __debug(message):
         """DEBUGレベルログを出力する
 
         Args:
             message (str): メッセージ
         """
-        print(f'{self.__get_title(Log.DEBUG)} {message}')
+        print(f'{Log.__get_title(Log.DEBUG)} {message}')
 
-    def __warning(self, message):
+    @staticmethod
+    def __warning(message):
         """WARNINGレベルログを出力する
 
         Args:
             message (str): メッセージ
         """
-        print(f'{self.__get_title(Log.WARNING)} {message}')
-        
-    def __error(self, message):
+        print(f'{Log.__get_title(Log.WARNING)} {message}')
+    
+    @staticmethod
+    def __error(message):
         """ERRORレベルログを出力する
 
         Args:
             message (str): メッセージ
         """
-        print(f'{self.__get_title(Log.ERROR)} {message}')
+        print(f'{Log.__get_title(Log.ERROR)} {message}')
 
-    def log(self, level, message):
+    @staticmethod
+    def log(level, message):
         """ログを出力する
 
         Args:
             level (int): ログレベル
             message (str): メッセージ
         """
-        if not level in self.log_dict:
-            self.__error(f'Invalid level: {level}')
+        log_dict = {
+            Log.INFO: Log.__info,
+            Log.DEBUG: Log.__debug,
+            Log.WARNING: Log.__warning,
+            Log.ERROR: Log.__error
+        }
+        if not level in log_dict:
+            Log.__error(f'Invalid level: {level}')
             return
-        self.log_dict[level](message)
+        log_dict[level](message)
 
 # 動作確認テスト
 if __name__ == "__main__":
