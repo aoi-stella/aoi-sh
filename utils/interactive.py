@@ -9,4 +9,15 @@ class Interactive:
         Args:
             message (str): メッセージ
         """
-        print(f'{FontStyle.instruction_to_user()}[+INSTRUCT+] {message}')
+        print(f'{FontStyle.instruction_to_user(f"[+aoi-shell+] {message}")}')
+        
+    def wait_for_input(message):
+        """ユーザーからの入力を待つ
+
+        Args:
+            message (str): メッセージ
+
+        Returns:
+            str: 入力された文字列
+        """
+        return input(f'{FontStyle.wait_for_input_from_user(f"[+You+] {message}")}')

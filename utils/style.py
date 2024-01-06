@@ -2,21 +2,25 @@ from utils.color import Color
 
 class FontStyle:
     @staticmethod
-    def info():
-        return f'{Color.BLUE + Color.BOLD}'
+    def info(message):
+        return f'{Color.BLUE + Color.BOLD}{message}{Color.RESET}'
 
     @staticmethod
-    def debug():
-        return f'{Color.GREEN + Color.BOLD}'
+    def debug(message):
+        return f'{Color.GREEN + Color.BOLD}{message}{Color.RESET}'
 
     @staticmethod
-    def warning():
-        return f'{Color.YELLOW + Color.BOLD}'
+    def warning(message):
+        return f'{Color.YELLOW + Color.BOLD}{message}{Color.RESET}'
 
     @staticmethod
-    def error():
-        return f'{Color.RED + Color.BOLD}'
+    def error(message):
+        return f'{Color.RED + Color.BOLD}{message}{Color.RESET}'
 
     @staticmethod
-    def instruction_to_user():
-        return f'{Color.BOLD}'
+    def instruction_to_user(message):
+        return f'{Color.BOLD}{message}{Color.RESET}'
+    
+    @staticmethod
+    def wait_for_input_from_user(message):
+        return f'{Color.BOLD}{message}{Color.RESET}'

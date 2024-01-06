@@ -19,10 +19,10 @@ class Log:
             str: タイトル
         """
         title_dict = {
-            Log.INFO: f'{FontStyle.info()}[+INFO+]',
-            Log.DEBUG:  f'{FontStyle.debug()}[+DEBUG+]',
-            Log.WARNING:  f'{FontStyle.warning()}[+WARNING+]',
-            Log.ERROR:  f'{FontStyle.error()}[+ERROR+]'
+            Log.INFO: f'{FontStyle.info("[+INFO+]")}',
+            Log.DEBUG:  f'{FontStyle.debug("[+DEBUG+]")}',
+            Log.WARNING:  f'{FontStyle.warning("[+WARNING+]")}',
+            Log.ERROR:  f'{FontStyle.error("[+ERROR+]")}'
         }
         
         if not level in title_dict:
