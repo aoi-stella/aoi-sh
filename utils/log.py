@@ -1,7 +1,4 @@
-if __name__ == "__main__":
-    from utils.color import Color
-else:
-    from .color import Color
+from utils.color import Color
     
 class Log:
     """Logクラス
