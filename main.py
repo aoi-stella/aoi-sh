@@ -52,7 +52,7 @@ def check_user_env() -> bool:
         Log.log(Log.ERROR, "Please install pwntools")
         return False
     
-    return True
+    return False
     
 
 def get_mode() -> int:
@@ -81,14 +81,17 @@ def subscribe_obsever(cmd_mgr: CmdMng):
     cmd_mgr.add_observer(ExitObserver())
     return
 
-def entry():
-    """エントリーポイント
+def __init():
+    """初期化処理
     """
     print_banner()
     print_script_info()
     if not check_user_env():
-        return
-    
+        exit()
+
+def __proc():
+    """メイン処理
+    """
     Interactive.message("Welcome to aoi shell")
     while True:
         cmd_mgr = CmdMng()
@@ -99,6 +102,13 @@ def entry():
         
         subscribe_obsever(cmd_mgr)
         cmd_mgr.set_mode(mode)
+
+def entry():
+    """エントリーポイント
+    """
+    
+    __init()
+    __proc()
 
 if __name__ == "__main__":
     entry()
