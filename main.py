@@ -52,7 +52,7 @@ def check_user_env() -> bool:
         Log.log(Log.ERROR, "Please install pwntools")
         return False
     
-    return False
+    return True
     
 
 def get_mode() -> int:
@@ -88,11 +88,11 @@ def __init():
     print_script_info()
     if not check_user_env():
         exit()
+    Interactive.message("Welcome to aoi shell")
 
 def __proc():
     """メイン処理
     """
-    Interactive.message("Welcome to aoi shell")
     while True:
         cmd_mgr = CmdMng()
 
