@@ -3,7 +3,31 @@ from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
 from cmds.exit import ExitObserver
 from utils.interactive import Interactive
 
+def print_banner():
+    """バナーを出力する
+    """
+    banner = """
+                                                        
+                                                        
+                     ■              ■              ■  ■ 
+                     ■              ■              ■  ■ 
+     ■■  ■                          ■              ■  ■ 
+    ■  ■ ■    ■■■■   ■         ■■■  ■ ■■■   ■■■■   ■  ■ 
+   ■    ■    ■    ■  ■ ■■■■■■ ■   ■ ■■   ■ ■    ■  ■  ■ 
+  ■    ■■    ■    ■  ■         ■    ■    ■ ■■■■■■  ■  ■ 
+  ■   ■■     ■    ■  ■          ■■  ■    ■ ■       ■  ■ 
+  ■  ■ ■ ■   ■    ■  ■        ■   ■ ■    ■ ■    ■  ■  ■ 
+   ■■   ■     ■■■■   ■         ■■■  ■    ■  ■■■■   ■  ■ 
+                                                        
+                                                        
+                                                        
+    
+    """
+    print(banner)
+
 def print_script_info():
+    """スクリプト情報を出力する
+    """
     Interactive.script_info("Version : 0.0.1")
     Interactive.script_info("Author  : aoi")
     Interactive.script_info("Github  : https://github.com/aoi-stella/aoi-sh")
@@ -39,24 +63,6 @@ def subscribe_obsever(cmd_mgr: CmdMng):
 def entry():
     """エントリーポイント
     """
-    ascii_art = """
-                                                        
-                                                        
-                     ■              ■              ■  ■ 
-                     ■              ■              ■  ■ 
-     ■■  ■                          ■              ■  ■ 
-    ■  ■ ■    ■■■■   ■         ■■■  ■ ■■■   ■■■■   ■  ■ 
-   ■    ■    ■    ■  ■ ■■■■■■ ■   ■ ■■   ■ ■    ■  ■  ■ 
-  ■    ■■    ■    ■  ■         ■    ■    ■ ■■■■■■  ■  ■ 
-  ■   ■■     ■    ■  ■          ■■  ■    ■ ■       ■  ■ 
-  ■  ■ ■ ■   ■    ■  ■        ■   ■ ■    ■ ■    ■  ■  ■ 
-   ■■   ■     ■■■■   ■         ■■■  ■    ■  ■■■■   ■  ■ 
-                                                        
-                                                        
-                                                        
-    
-    """
-    print(ascii_art)
     print_script_info()
     Interactive.message("Welcome to aoi shell")
     while True:
