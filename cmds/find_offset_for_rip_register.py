@@ -1,6 +1,8 @@
 import os
 from pwn import *
 from observers.observer_frame import AbstractObserver
+from utils.log import Log
+from utils.interactive import Interactive
 
 class FindRIPOffsetObserver(AbstractObserver):
     """RIPまでのオフセットを計算するモードで使用するオブザーバークラス
@@ -37,9 +39,9 @@ class FindRIPOffsetObserver(AbstractObserver):
         return offset, True
     
     def __proc(self):
-        dst_bin_path = input("Specify destination binary file path: ")
+        dst_bin_path = Interactive.wait_for_input("Specify destination binary file path: ")
         if not self.__check_bin_path(dst_bin_path):
-            print("specified path is invalid...")
+            Log.log(Log.ERROR, "Please specify valid path")
             exit()
 
         proc = process(dst_bin_path)
@@ -47,15 +49,15 @@ class FindRIPOffsetObserver(AbstractObserver):
         pattern_length = 1000
         pattern = cyclic(pattern_length)
 
-        print("You copy this pattern and execute destination program")
-        print(pattern.decode('utf-8' ))
-        rip_value = input("When crashed RBP address: ")
+        Interactive.message("You copy this pattern and execute destination program")
+        Log.log(Log.INFO, pattern.decode('utf-8'))
+        rip_value = Interactive.wait_for_input("RBP address:")
         offset, result = self.__calc_offset_for_rip(rip_value)
         if not result:
-            print("Failed to calc offset...")
+            Log.log(Log.ERROR, "Failed to calc offset...")
             exit()
-        print("Succeed to calc offset!!")
-        print(f"Offset for rip registers: {offset}")
+        Interactive.message("Success to calc offset for RIP register")
+        Log.log(Log.INFO, f"Offset for rip registers: {offset}")
         
     def update(self, mode):
         """通知受信時更新処理
@@ -64,5 +66,5 @@ class FindRIPOffsetObserver(AbstractObserver):
             mode (int): モード
         """
         if mode == 1:
-            print("Find offset for RIP")
+            Log.log(Log.INFO, "Mode : Find offset for RIP")
             self.__proc()
