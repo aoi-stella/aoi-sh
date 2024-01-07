@@ -1,7 +1,8 @@
 from cmd_mgr import CmdMng
-from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
 from cmds.exit import ExitObserver
 from utils.interactive import Interactive
+from utils.check_user_env import CheckUserEnvironment
+from utils.log import Log
 
 def print_banner():
     """バナーを出力する
@@ -35,6 +36,25 @@ def print_script_info():
     print("\n")
     return
 
+def check_user_env() -> bool:
+    """ユーザー環境をチェックする
+
+    Returns:
+        bool: ユーザー環境が正常かどうか
+    """
+    is_python_ok = CheckUserEnvironment.check_python3_installed()
+    if not is_python_ok:
+        Log.log(Log.ERROR, "Please install python3")
+        return False
+        
+    is_pwntools_ok = CheckUserEnvironment.check_pwontools_installed()
+    if not is_pwntools_ok:
+        Log.log(Log.ERROR, "Please install pwntools")
+        return False
+    
+    return True
+    
+
 def get_mode() -> int:
     """モードをユーザーから取得する
 
@@ -56,6 +76,7 @@ def subscribe_obsever(cmd_mgr: CmdMng):
     Args:
         cmd_mgr (CmdMng): コマンドマネージャー
     """
+    from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
     cmd_mgr.add_observer(FindRIPOffsetObserver())
     cmd_mgr.add_observer(ExitObserver())
     return
@@ -64,6 +85,9 @@ def entry():
     """エントリーポイント
     """
     print_script_info()
+    if not check_user_env():
+        return
+    
     Interactive.message("Welcome to aoi shell")
     while True:
         cmd_mgr = CmdMng()
