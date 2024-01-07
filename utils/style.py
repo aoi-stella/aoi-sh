@@ -28,3 +28,11 @@ class FontStyle:
     @staticmethod
     def message_to_user(message):
         return f'{Color.BOLD}{message}{Color.RESET}'
+    
+    @staticmethod
+    def script_info(message):
+        return f'{Color.MAGENTA + Color.BOLD}{message}{Color.RESET}'
+    
+    @staticmethod
+    def separator():
+        return f'{Color.BOLD}{"+" * 80}{Color.RESET}'

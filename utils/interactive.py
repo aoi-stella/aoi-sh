@@ -29,3 +29,16 @@ class Interactive:
             message (str): メッセージ
         """
         print(f'{FontStyle.message_to_user(f"[+MSG+] {message}")}')
+        
+    def script_info(message):
+        """スクリプト情報を出力する
+
+        Args:
+            message (str): メッセージ
+        """
+        print(f'{FontStyle.script_info(f"[+PRG INFO+] {message}")}')
+        
+    def separator():
+        """区切り線を出力する
+        """
+        print(f'{FontStyle.separator()}')
