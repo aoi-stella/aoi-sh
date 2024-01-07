@@ -4,7 +4,7 @@ from utils.interactive import Interactive
 from utils.check_user_env import CheckUserEnvironment
 from utils.log import Log
 
-def print_banner():
+def __print_banner():
     """バナーを出力する
     """
     banner = """
@@ -26,7 +26,7 @@ def print_banner():
     """
     print(banner)
 
-def print_script_info():
+def __print_script_info():
     """スクリプト情報を出力する
     """
     Interactive.script_info("Version : 0.0.1")
@@ -36,7 +36,7 @@ def print_script_info():
     print("\n")
     return
 
-def check_user_env() -> bool:
+def __check_user_env() -> bool:
     """ユーザー環境をチェックする
 
     Returns:
@@ -55,7 +55,7 @@ def check_user_env() -> bool:
     return True
     
 
-def get_mode() -> int:
+def __get_mode() -> int:
     """モードをユーザーから取得する
 
     Returns:
@@ -70,7 +70,7 @@ def get_mode() -> int:
     mode = int(Interactive.wait_for_input("Specify mode: "))
     return mode
 
-def subscribe_obsever(cmd_mgr: CmdMng):
+def __subscribe_obsever(cmd_mgr: CmdMng):
     """オブザーバーを登録する
 
     Args:
@@ -84,9 +84,9 @@ def subscribe_obsever(cmd_mgr: CmdMng):
 def __init():
     """初期化処理
     """
-    print_banner()
-    print_script_info()
-    if not check_user_env():
+    __print_banner()
+    __print_script_info()
+    if not __check_user_env():
         exit()
     Interactive.message("Welcome to aoi shell")
 
@@ -96,14 +96,14 @@ def __proc():
     while True:
         cmd_mgr = CmdMng()
 
-        mode = get_mode()
+        mode = __get_mode()
         if mode==0:
             exit()
         
-        subscribe_obsever(cmd_mgr)
+        __subscribe_obsever(cmd_mgr)
         cmd_mgr.set_mode(mode)
 
-def entry():
+def __entry():
     """エントリーポイント
     """
     
@@ -111,4 +111,4 @@ def entry():
     __proc()
 
 if __name__ == "__main__":
-    entry()
+    __entry()
