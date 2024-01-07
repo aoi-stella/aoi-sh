@@ -84,6 +84,7 @@ def subscribe_obsever(cmd_mgr: CmdMng):
 def entry():
     """エントリーポイント
     """
+    print_banner()
     print_script_info()
     if not check_user_env():
         return
