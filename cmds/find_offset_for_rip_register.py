@@ -8,18 +8,16 @@ class FindRIPOffsetObserver(AbstractObserver):
     """RIPまでのオフセットを計算するモードで使用するオブザーバークラス
     """
     
-    def __check_bin_path(self, bin_path: str) -> bool:
-        """バイナリファイルのパスの正当性チェック
-
-        Args:
-            bin_path (str): バイナリファイルのパス
+    def __get_dst_bin_path(self) -> str:
+        """バイナリファイルのパスを取得する
 
         Returns:
-            bool: バイナリファイルのパスが正しいかどうか
+            str: バイナリファイルのパス
         """
-        if bin_path == "":
-            return False
-        return os.path.isfile(bin_path)
+        dbs = Interactive.wait_for_input("Specify destination binary file path: ")
+        if dbs == "" or os.path.isfile(dbs) == False:
+            return ""
+        return dbs
 
     def __calc_offset_for_rip(self, rip_value: str) -> (int, bool):
         """クラッシュ時のRIP値からオフセットを計算する
@@ -39,12 +37,11 @@ class FindRIPOffsetObserver(AbstractObserver):
         return offset, True
     
     def __proc(self):
-        dst_bin_path = Interactive.wait_for_input("Specify destination binary file path: ")
-        if not self.__check_bin_path(dst_bin_path):
-            Log.log(Log.ERROR, "Please specify valid path")
-            exit()
-
-        proc = process(dst_bin_path)
+        # TODO : gdb実行自動化の時に有効化すること
+        # dbs = self.__get_dst_bin_path()
+        # if dbs == "":
+        #     Log.log(Log.ERROR, "Please specify valid path")
+        #     exit()
 
         pattern_length = 1000
         pattern = cyclic(pattern_length)
