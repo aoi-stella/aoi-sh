@@ -49,6 +49,8 @@ class FindRIPOffsetObserver(AbstractObserver):
         pattern_length = 1000
         pattern = cyclic(pattern_length)
 
+        Log.log(Log.WARNING, "Please verify that the security features of the specified binary executable are disabled by using checksec.sh. ")
+        Log.log(Log.WARNING, "This step is crucial to ensure that the binary is in the appropriate state for further analysis or testing.")
         Interactive.message("You copy this pattern and execute destination program")
         Log.log(Log.INFO, pattern.decode('utf-8'))
         rip_value = Interactive.wait_for_input("RBP address:")
