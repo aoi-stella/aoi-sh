@@ -3,12 +3,21 @@ from cmds.find_offset_for_rip_register import FindRIPOffsetObserver
 from cmds.exit import ExitObserver
 from utils.interactive import Interactive
 
+def print_script_info():
+    Interactive.script_info("Version : 0.0.1")
+    Interactive.script_info("Author  : aoi")
+    Interactive.script_info("Github  : https://github.com/aoi-stella/aoi-sh")
+    Interactive.script_info("License : ???")
+    print("\n")
+    return
+
 def get_mode() -> int:
     """モードをユーザーから取得する
 
     Returns:
         int: モード
     """
+    Interactive.separator()
     Interactive.instruct("Select script mode")
     Interactive.instruct("[0]. Exit")
     Interactive.instruct("[1]. Find offset for RIP")
@@ -48,6 +57,7 @@ def entry():
     
     """
     print(ascii_art)
+    print_script_info()
     Interactive.message("Welcome to aoi shell")
     while True:
         cmd_mgr = CmdMng()
