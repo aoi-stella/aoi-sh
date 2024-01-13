@@ -36,7 +36,7 @@ class FindRIPOffsetObserver(AbstractObserver):
             return offset, False
         return offset, True
     
-    def __proc(self):
+    def __proc(self) -> None:
         # TODO : gdb実行自動化の時に有効化すること
         # dbs = self.__get_dst_bin_path()
         # if dbs == "":
@@ -58,7 +58,7 @@ class FindRIPOffsetObserver(AbstractObserver):
         Interactive.message("Success to calc offset for RIP register")
         Log.log(Log.INFO, f"Offset for rip registers: {offset}")
         
-    def update(self, mode):
+    def update(self, mode: int) -> None:
         """通知受信時更新処理
 
         Args:

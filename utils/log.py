@@ -9,7 +9,7 @@ class Log:
     ERROR = 3
     
     @staticmethod
-    def __get_title(level) -> str:
+    def __get_title(level: int) -> str:
         """タイトルを取得する
 
         Args:
@@ -30,7 +30,7 @@ class Log:
         return title_dict[level]
     
     @staticmethod
-    def __info(message):
+    def __info(message: str) -> None:
         """INFOレベルログを出力する
 
         Args:
@@ -39,7 +39,7 @@ class Log:
         print(f'{Log.__get_title(Log.INFO)} {message}')
 
     @staticmethod
-    def __debug(message):
+    def __debug(message: str) -> None:
         """DEBUGレベルログを出力する
 
         Args:
@@ -48,7 +48,7 @@ class Log:
         print(f'{Log.__get_title(Log.DEBUG)} {message}')
 
     @staticmethod
-    def __warning(message):
+    def __warning(message: str) -> None:
         """WARNINGレベルログを出力する
 
         Args:
@@ -57,7 +57,7 @@ class Log:
         print(f'{Log.__get_title(Log.WARNING)} {message}')
     
     @staticmethod
-    def __error(message):
+    def __error(message: str) -> None:
         """ERRORレベルログを出力する
 
         Args:
@@ -66,7 +66,7 @@ class Log:
         print(f'{Log.__get_title(Log.ERROR)} {message}')
 
     @staticmethod
-    def log(level, message):
+    def log(level: int, message: str) -> None:
         """ログを出力する
 
         Args:
