@@ -4,7 +4,7 @@ from utils.interactive import Interactive
 from utils.check_user_env import CheckUserEnvironment
 from utils.log import Log
 
-def __print_banner():
+def __print_banner() -> None:
     """バナーを出力する
     """
     banner = """
@@ -26,7 +26,7 @@ def __print_banner():
     """
     print(banner)
 
-def __print_script_info():
+def __print_script_info() -> None:
     """スクリプト情報を出力する
     """
     Interactive.script_info("Version : 0.0.1")
@@ -70,7 +70,7 @@ def __get_mode() -> int:
     mode = int(Interactive.wait_for_input("Specify mode: "))
     return mode
 
-def __subscribe_obsever(cmd_mgr: CmdMng):
+def __subscribe_obsever(cmd_mgr: CmdMng) -> None:
     """オブザーバーを登録する
 
     Args:
@@ -81,7 +81,7 @@ def __subscribe_obsever(cmd_mgr: CmdMng):
     cmd_mgr.add_observer(ExitObserver())
     return
 
-def __init():
+def __init() -> None:
     """初期化処理
     """
     __print_banner()
@@ -90,7 +90,7 @@ def __init():
         exit()
     Interactive.message("Welcome to aoi shell")
 
-def __proc():
+def __proc() -> None:
     """メイン処理
     """
     while True:
@@ -103,7 +103,7 @@ def __proc():
         __subscribe_obsever(cmd_mgr)
         cmd_mgr.set_mode(mode)
 
-def __entry():
+def __entry() -> None:
     """エントリーポイント
     """
     

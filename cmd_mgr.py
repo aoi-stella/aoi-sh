@@ -1,13 +1,13 @@
 from observers.observer_frame import AbstractObserver
 
 class CmdMng:
-    def __init__(self):
+    def __init__(self) -> None:
         """初期化
         """
         self.mode = -1
         self.observers = []
 
-    def set_mode(self, mode: int):
+    def set_mode(self, mode: int) -> None:
         """モードを設定する
 
         Args:
@@ -16,7 +16,7 @@ class CmdMng:
         self.mode = mode
         self.notify()
         
-    def add_observer(self, new_observer: AbstractObserver):
+    def add_observer(self, new_observer: AbstractObserver) -> None:
         """オブザーバーを追加する
 
         Args:
@@ -24,7 +24,7 @@ class CmdMng:
         """
         self.observers.append(new_observer)
         
-    def notify(self):
+    def notify(self) -> None:
         """オブザーバーに通知する
         """
         for observer in self.observers:
